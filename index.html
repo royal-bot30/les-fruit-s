@@ -19,7 +19,6 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Nunito', sans-serif; background: var(--cream); color: var(--dark); overflow-x: hidden; }
 
-    /* ── NAVIGATION ENTRE VUES ── */
     #page-accueil    { display: block; }
     #page-formulaire { display: none;  }
 
@@ -33,7 +32,7 @@
     }
     .hero::before, .hero::after { content:''; position:absolute; border-radius:50%; opacity:.12; }
     .hero::before { width:500px; height:500px; background:var(--green2); top:-120px; left:-120px; }
-    .hero::after  { width:350px; height:350px; background:var(--red);    bottom:-80px; right:-80px; }
+    .hero::after  { width:350px; height:350px; background:var(--red); bottom:-80px; right:-80px; }
 
     .badge {
       display:inline-block; background:var(--green2); color:var(--white);
@@ -129,14 +128,23 @@
     /* ── CTA ── */
     .cta-section { background:linear-gradient(135deg,#e8f5e2,#fffbea); text-align:center; padding:80px 20px; }
     .cta-section p { font-size:1.1rem; color:#555; margin-bottom:32px; max-width:520px; margin-left:auto; margin-right:auto; }
+
+    /* ── BOUTON S'INSCRIRE ── */
     .btn-register {
       display:inline-block; background:linear-gradient(135deg,#1565c0,#1e88e5);
       color:var(--white); font-family:'Nunito',sans-serif; font-size:1.15rem;
       font-weight:800; padding:18px 52px; border-radius:50px; border:none;
       cursor:pointer; box-shadow:0 8px 28px rgba(21,101,192,.35);
       transition:transform .2s, box-shadow .2s; letter-spacing:.5px;
+      text-decoration:none;
     }
     .btn-register:hover { transform:translateY(-3px) scale(1.03); box-shadow:0 14px 36px rgba(21,101,192,.45); }
+
+    /* ── BOUTON HERO (sous logo) ── */
+    .btn-hero {
+      margin-top:32px;
+      animation:fadeDown .7s .4s ease both;
+    }
 
     /* ── FOOTER ── */
     footer { background:var(--dark); color:rgba(255,255,255,.6); text-align:center; padding:28px 20px; font-size:.85rem; }
@@ -222,7 +230,11 @@
       from { opacity:0; transform:translateY(-20px); }
       to   { opacity:1; transform:translateY(0); }
     }
-    @media (max-width:500px) { .form-card { padding:32px 22px; } }
+
+    @media (max-width:500px) {
+      .form-card { padding:32px 22px; }
+      .btn-register { padding:16px 32px; font-size:1rem; }
+    }
   </style>
 </head>
 <body>
@@ -242,9 +254,12 @@
     <div class="logo-wrapper">
       <img class="logo-circle" src="images/logo[1].jpeg" alt="Logo Les Fruités" />
     </div>
-    
+    <!-- BOUTON SOUS LE LOGO -->
+    <button class="btn-register btn-hero" onclick="allerFormulaire()">
+      S'inscrire à la Formation 🍓
+    </button>
   </section>
-      
+
   <section class="info-section">
     <div class="container">
       <h2 class="section-title">Informations Clés</h2>
@@ -312,7 +327,7 @@
     <div class="container">
       <h2 class="section-title">Prêt(e) à nous rejoindre ?</h2>
       <p>Ne manquez pas cette opportunité unique ! Les places sont limitées. Cliquez ci-dessous pour remplir votre formulaire d'inscription.</p>
-      <button class="btn-register" onclick="allerFormulaire()">S'inscrire à la Formation</button>
+      <button class="btn-register" onclick="allerFormulaire()">S'inscrire à la Formation 🍓</button>
     </div>
   </section>
 
@@ -380,11 +395,9 @@
 
 
 <script>
-  // ── REMPLACEZ CES 3 VALEURS AVEC VOS IDENTIFIANTS EMAILJS ──
   const EMAILJS_PUBLIC_KEY  = "9V_ND8e40rvbPCMUA";
   const EMAILJS_SERVICE_ID  = "service_3gxoy3m";
   const EMAILJS_TEMPLATE_ID = "template_c4s6jgp";
-  // ────────────────────────────────────────────────────────────
 
   emailjs.init(EMAILJS_PUBLIC_KEY);
 
@@ -454,4 +467,4 @@
 </script>
 
 </body>
-</html>
+</html>      
