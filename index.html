@@ -16,303 +16,187 @@
       --dark:   #1a1a1a;
       --white:  #ffffff;
     }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Nunito', sans-serif; background: var(--cream); color: var(--dark); overflow-x: hidden; }
 
-    body {
-      font-family: 'Nunito', sans-serif;
-      background: var(--cream);
-      color: var(--dark);
-      overflow-x: hidden;
-    }
+    #page-accueil    { display: block; }
+    #page-formulaire { display: none;  }
 
-    /* ══════════════════════════════
-       VUE : affichage/masquage
-    ══════════════════════════════ */
-    #page-accueil   { display: block; }
-    #page-formulaire { display: none; }
-
-    /* ══════════════════════════════
-       HERO
-    ══════════════════════════════ */
+    /* ── HERO ── */
     .hero {
       min-height: 100vh;
       background: linear-gradient(160deg, #e8f5e2 0%, #fffbea 50%, #fff3cd 100%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 60px 20px 80px;
-      position: relative;
-      overflow: hidden;
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; text-align: center;
+      padding: 60px 20px 80px; position: relative;
     }
-    .hero::before, .hero::after {
-      content:'';
-      position: absolute;
-      border-radius: 50%;
-      opacity: .12;
-    }
+    .hero::before, .hero::after { content:''; position:absolute; border-radius:50%; opacity:.12; }
     .hero::before { width:500px; height:500px; background:var(--green2); top:-120px; left:-120px; }
-    .hero::after  { width:350px; height:350px; background:var(--red);    bottom:-80px; right:-80px; }
+    .hero::after  { width:350px; height:350px; background:var(--red); bottom:-80px; right:-80px; }
 
     .badge {
-      display: inline-block;
-      background: var(--green2);
-      color: var(--white);
-      font-size: .8rem; font-weight: 800;
-      letter-spacing: 2px; text-transform: uppercase;
-      padding: 6px 20px; border-radius: 50px;
-      margin-bottom: 24px;
-      animation: fadeDown .6s ease both;
+      display:inline-block; background:var(--green2); color:var(--white);
+      font-size:.8rem; font-weight:800; letter-spacing:2px; text-transform:uppercase;
+      padding:6px 20px; border-radius:50px; margin-bottom:24px;
+      animation:fadeDown .6s ease both;
     }
     .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.2rem, 6vw, 4rem);
-      font-weight: 900; line-height: 1.15;
-      color: var(--green); max-width: 720px;
-      animation: fadeDown .7s .1s ease both;
+      font-family:'Playfair Display',serif; font-size:clamp(2.2rem,6vw,4rem);
+      font-weight:900; line-height:1.15; color:var(--green); max-width:720px;
+      animation:fadeDown .7s .1s ease both;
     }
-    .hero h1 span { color: var(--red); }
-
+    .hero h1 span { color:var(--red); }
     .welcome-text {
-      margin-top: 22px;
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
-      font-weight: 600; color: #555;
-      max-width: 580px; line-height: 1.7;
-      animation: fadeDown .7s .2s ease both;
+      margin-top:22px; font-size:clamp(1rem,2.5vw,1.2rem); font-weight:600;
+      color:#555; max-width:580px; line-height:1.7;
+      animation:fadeDown .7s .2s ease both;
     }
-    .logo-wrapper { margin-top: 36px; animation: fadeDown .7s .3s ease both; }
+    .logo-wrapper { margin-top:36px; animation:fadeDown .7s .3s ease both; }
     .logo-circle {
-      width: 140px; height: 140px;
-      border-radius: 50%;
-      border: 5px solid var(--green2);
-      box-shadow: 0 8px 32px rgba(76,175,42,.25), 0 2px 8px rgba(0,0,0,.1);
-      object-fit: cover; background: #fff; display: block;
+      width:140px; height:140px; border-radius:50%;
+      border:5px solid var(--green2);
+      box-shadow:0 8px 32px rgba(76,175,42,.25), 0 2px 8px rgba(0,0,0,.1);
+      object-fit:cover; background:#fff; display:block;
     }
 
-    /* ══════════════════════════════
-       SECTIONS COMMUNES
-    ══════════════════════════════ */
-    section { padding: 70px 20px; }
-    .container { max-width: 860px; margin: 0 auto; }
-
+    /* ── SECTIONS ── */
+    section { padding:70px 20px; }
+    .container { max-width:860px; margin:0 auto; }
     .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.6rem, 4vw, 2.4rem);
-      color: var(--green);
-      margin-bottom: 32px; text-align: center; position: relative;
+      font-family:'Playfair Display',serif; font-size:clamp(1.6rem,4vw,2.4rem);
+      color:var(--green); margin-bottom:32px; text-align:center; position:relative;
     }
     .section-title::after {
-      content:''; display:block;
-      width:60px; height:4px;
-      background:var(--yellow); border-radius:4px;
-      margin:10px auto 0;
+      content:''; display:block; width:60px; height:4px;
+      background:var(--yellow); border-radius:4px; margin:10px auto 0;
     }
 
-    /* ══════════════════════════════
-       INFOS CLÉS
-    ══════════════════════════════ */
-    .info-section { background: var(--white); }
-
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
+    /* ── INFOS CLÉS ── */
+    .info-section { background:var(--white); }
+    .cards-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; }
     .card {
-      background: linear-gradient(135deg, #f0fbe8, #fffbea);
-      border: 2px solid #d4edba; border-radius: 18px;
-      padding: 28px 22px; text-align: center;
-      transition: transform .25s, box-shadow .25s;
+      background:linear-gradient(135deg,#f0fbe8,#fffbea); border:2px solid #d4edba;
+      border-radius:18px; padding:28px 22px; text-align:center;
+      transition:transform .25s, box-shadow .25s;
     }
-    .card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(45,122,31,.12); }
-    .card-icon  { font-size: 2.2rem; margin-bottom: 12px; }
+    .card:hover { transform:translateY(-4px); box-shadow:0 12px 32px rgba(45,122,31,.12); }
+    .card-icon  { font-size:2.2rem; margin-bottom:12px; }
     .card-label { font-size:.75rem; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; color:var(--green2); margin-bottom:6px; }
     .card-value { font-size:1.05rem; font-weight:700; color:var(--dark); }
 
-    /* ══════════════════════════════
-       MODULES
-    ══════════════════════════════ */
-    .modules-section { background: linear-gradient(135deg, #1e5c10, #2d7a1f); }
-    .modules-section .section-title { color: var(--yellow); }
-    .modules-section .section-title::after { background: var(--white); }
-
-    .modules-list {
-      list-style: none;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-    }
+    /* ── MODULES ── */
+    .modules-section { background:linear-gradient(135deg,#1e5c10,#2d7a1f); }
+    .modules-section .section-title { color:var(--yellow); }
+    .modules-section .section-title::after { background:var(--white); }
+    .modules-list { list-style:none; display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; }
     .modules-list li {
-      background: rgba(255,255,255,.1); border: 1.5px solid rgba(255,255,255,.2);
-      border-radius: 14px; padding: 18px 22px;
-      color: var(--white); font-size: 1rem; font-weight: 600;
-      display: flex; align-items: center; gap: 12px;
-      backdrop-filter: blur(4px); transition: background .2s;
+      background:rgba(255,255,255,.1); border:1.5px solid rgba(255,255,255,.2);
+      border-radius:14px; padding:18px 22px; color:var(--white);
+      font-size:1rem; font-weight:600; display:flex; align-items:center; gap:12px;
+      backdrop-filter:blur(4px); transition:background .2s;
     }
-    .modules-list li:hover { background: rgba(255,255,255,.18); }
+    .modules-list li:hover { background:rgba(255,255,255,.18); }
     .modules-list li::before { content:'🍃'; font-size:1.3rem; flex-shrink:0; }
 
-    /* ══════════════════════════════
-       PRIX
-    ══════════════════════════════ */
-    .price-section { background: var(--cream); }
-
+    /* ── PRIX ── */
+    .price-section { background:var(--cream); }
     .price-box {
-      background: var(--white); border-radius: 24px;
-      border: 3px solid var(--green2); padding: 40px 36px;
-      text-align: center;
-      box-shadow: 0 12px 40px rgba(45,122,31,.1);
-      max-width: 640px; margin: 0 auto;
+      background:var(--white); border-radius:24px; border:3px solid var(--green2);
+      padding:40px 36px; text-align:center; box-shadow:0 12px 40px rgba(45,122,31,.1);
+      max-width:640px; margin:0 auto;
     }
-    .price-amount {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.4rem, 6vw, 3.4rem);
-      font-weight: 900; color: var(--red); margin-bottom: 6px;
-    }
+    .price-amount { font-family:'Playfair Display',serif; font-size:clamp(2.4rem,6vw,3.4rem); font-weight:900; color:var(--red); margin-bottom:6px; }
     .price-sub  { font-size:.95rem; color:#666; margin-bottom:28px; }
-    .price-nb   {
-      background: #fff8e1; border-left: 4px solid var(--yellow);
-      border-radius: 8px; padding: 14px 18px;
-      font-size: .92rem; color: #555; text-align: left;
-      margin-bottom: 24px; line-height: 1.7;
-    }
-    .price-nb strong { color: var(--dark); }
-
+    .price-nb   { background:#fff8e1; border-left:4px solid var(--yellow); border-radius:8px; padding:14px 18px; font-size:.92rem; color:#555; text-align:left; margin-bottom:24px; line-height:1.7; }
+    .price-nb strong { color:var(--dark); }
     .payment-methods { display:flex; flex-direction:column; gap:12px; text-align:left; }
-    .payment-item {
-      background: linear-gradient(90deg, #f0fbe8, #fffbea);
-      border: 1.5px solid #c8e6b0; border-radius: 12px;
-      padding: 14px 20px; font-size:.95rem; font-weight:600; color:var(--dark);
-    }
+    .payment-item { background:linear-gradient(90deg,#f0fbe8,#fffbea); border:1.5px solid #c8e6b0; border-radius:12px; padding:14px 20px; font-size:.95rem; font-weight:600; color:var(--dark); }
     .payment-item span { color:var(--green); font-weight:800; }
+    .whatsapp-note { margin-top:20px; background:#e8f5e2; border-radius:12px; padding:14px 20px; font-size:.92rem; color:#2d7a1f; font-weight:700; display:flex; align-items:center; gap:10px; }
 
-    .whatsapp-note {
-      margin-top: 20px; background: #e8f5e2; border-radius: 12px;
-      padding: 14px 20px; font-size:.92rem; color:#2d7a1f;
-      font-weight: 700; display:flex; align-items:center; gap:10px;
-    }
-
-    /* ══════════════════════════════
-       MODALITÉS
-    ══════════════════════════════ */
-    .modalities-section { background: var(--white); }
-
-    .modalities-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
+    /* ── MODALITÉS ── */
+    .modalities-section { background:var(--white); }
+    .modalities-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; }
     .modality-card { border-radius:16px; padding:28px 22px; text-align:center; }
     .modality-card.green  { background:linear-gradient(135deg,#2d7a1f,#4caf2a); color:#fff; }
     .modality-card.red    { background:linear-gradient(135deg,#c0392b,#e74c3c); color:#fff; }
     .modality-card.yellow { background:linear-gradient(135deg,#f0a500,#f9c923); color:#1a1a1a; }
     .modality-card-icon { font-size:2.4rem; margin-bottom:12px; }
-    .modality-card h3   { font-size:1rem; font-weight:800; margin-bottom:8px; }
-    .modality-card p    { font-size:.9rem; line-height:1.6; opacity:.9; }
+    .modality-card h3 { font-size:1rem; font-weight:800; margin-bottom:8px; }
+    .modality-card p  { font-size:.9rem; line-height:1.6; opacity:.9; }
 
-    /* ══════════════════════════════
-       CTA
-    ══════════════════════════════ */
-    .cta-section {
-      background: linear-gradient(135deg, #e8f5e2, #fffbea);
-      text-align: center; padding: 80px 20px;
-    }
-    .cta-section p {
-      font-size:1.1rem; color:#555; margin-bottom:32px;
-      max-width:520px; margin-left:auto; margin-right:auto;
-    }
+    /* ── CTA ── */
+    .cta-section { background:linear-gradient(135deg,#e8f5e2,#fffbea); text-align:center; padding:80px 20px; }
+    .cta-section p { font-size:1.1rem; color:#555; margin-bottom:32px; max-width:520px; margin-left:auto; margin-right:auto; }
+
+    /* ── BOUTON S'INSCRIRE ── */
     .btn-register {
-      display: inline-block;
-      background: linear-gradient(135deg, #1565c0, #1e88e5);
-      color: var(--white); font-family:'Nunito',sans-serif;
-      font-size:1.15rem; font-weight:800;
-      padding:18px 52px; border-radius:50px; border:none;
-      cursor:pointer; text-decoration:none;
-      box-shadow: 0 8px 28px rgba(21,101,192,.35);
-      transition: transform .2s, box-shadow .2s; letter-spacing:.5px;
+      display:inline-block; background:linear-gradient(135deg,#1565c0,#1e88e5);
+      color:var(--white); font-family:'Nunito',sans-serif; font-size:1.15rem;
+      font-weight:800; padding:18px 52px; border-radius:50px; border:none;
+      cursor:pointer; box-shadow:0 8px 28px rgba(21,101,192,.35);
+      transition:transform .2s, box-shadow .2s; letter-spacing:.5px;
+      text-decoration:none;
     }
-    .btn-register:hover {
-      transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 14px 36px rgba(21,101,192,.45);
+    .btn-register:hover { transform:translateY(-3px) scale(1.03); box-shadow:0 14px 36px rgba(21,101,192,.45); }
+
+    /* ── BOUTON HERO (sous logo) ── */
+    .btn-hero {
+      margin-top: 28px;
+      opacity: 1 !important;
+      transform: none !important;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      font-size: 1rem;
+      padding: 16px 36px;
     }
 
-    /* ══════════════════════════════
-       FOOTER
-    ══════════════════════════════ */
-    footer {
-      background: var(--dark); color:rgba(255,255,255,.6);
-      text-align:center; padding:28px 20px; font-size:.85rem;
-    }
+    /* ── FOOTER ── */
+    footer { background:var(--dark); color:rgba(255,255,255,.6); text-align:center; padding:28px 20px; font-size:.85rem; }
     footer strong { color:var(--yellow); }
 
-    /* ══════════════════════════════
-       PAGE FORMULAIRE
-    ══════════════════════════════ */
+    /* ── PAGE FORMULAIRE ── */
     #page-formulaire {
-      min-height: 100vh;
-      background: linear-gradient(160deg, #e8f5e2 0%, #fffbea 60%, #fff3cd 100%);
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 20px;
+      min-height:100vh;
+      background:linear-gradient(160deg,#e8f5e2 0%,#fffbea 60%,#fff3cd 100%);
+      flex-direction:column; align-items:center; justify-content:center; padding:40px 20px;
     }
-    #page-formulaire.active { display: flex; }
+    #page-formulaire.active { display:flex; }
 
     .back-link {
-      align-self: flex-start;
-      margin-bottom: 20px;
-      font-size:.9rem; font-weight:700; color:var(--green);
-      background: none; border:none; cursor:pointer;
+      align-self:flex-start; margin-bottom:20px; font-size:.9rem; font-weight:700;
+      color:var(--green); background:none; border:none; cursor:pointer;
       display:flex; align-items:center; gap:6px;
       transition:color .2s; font-family:'Nunito',sans-serif;
     }
     .back-link:hover { color:var(--green2); }
 
     .form-card {
-      background: var(--white); border-radius:28px;
-      box-shadow: 0 16px 60px rgba(45,122,31,.13);
-      padding: 48px 40px; max-width:540px; width:100%;
+      background:var(--white); border-radius:28px;
+      box-shadow:0 16px 60px rgba(45,122,31,.13);
+      padding:48px 40px; max-width:540px; width:100%;
     }
     .form-card-header { text-align:center; margin-bottom:36px; }
     .form-card-header .emoji { font-size:2.8rem; display:block; margin-bottom:12px; }
-    .form-card-header h1 {
-      font-family:'Playfair Display',serif;
-      font-size: clamp(1.6rem,4vw,2rem);
-      color:var(--green); margin-bottom:10px;
-    }
+    .form-card-header h1 { font-family:'Playfair Display',serif; font-size:clamp(1.6rem,4vw,2rem); color:var(--green); margin-bottom:10px; }
     .form-card-header p { font-size:.97rem; color:#666; line-height:1.65; }
 
     .form-group { margin-bottom:22px; }
-    label {
-      display:block; font-size:.88rem; font-weight:800;
-      text-transform:uppercase; letter-spacing:1px;
-      color:var(--green); margin-bottom:8px;
-    }
+    label { display:block; font-size:.88rem; font-weight:800; text-transform:uppercase; letter-spacing:1px; color:var(--green); margin-bottom:8px; }
     input {
-      width:100%; padding:14px 18px;
-      border:2px solid #d4edba; border-radius:12px;
+      width:100%; padding:14px 18px; border:2px solid #d4edba; border-radius:12px;
       font-family:'Nunito',sans-serif; font-size:1rem; font-weight:600;
       color:var(--dark); background:#f8fdf5;
       transition:border-color .2s, box-shadow .2s; outline:none;
     }
-    input:focus {
-      border-color:var(--green2);
-      box-shadow:0 0 0 3px rgba(76,175,42,.15);
-      background:var(--white);
-    }
+    input:focus { border-color:var(--green2); box-shadow:0 0 0 3px rgba(76,175,42,.15); background:var(--white); }
     input::placeholder { color:#aaa; font-weight:400; }
 
     .btn-submit {
-      width:100%;
-      background:linear-gradient(135deg,#1b7a0d,#2d7a1f,#4caf2a);
-      color:var(--white); font-family:'Nunito',sans-serif;
-      font-size:1.1rem; font-weight:800; padding:17px;
-      border:none; border-radius:50px; cursor:pointer;
-      box-shadow:0 8px 28px rgba(45,122,31,.35);
-      transition:transform .2s, box-shadow .2s;
+      width:100%; background:linear-gradient(135deg,#1b7a0d,#2d7a1f,#4caf2a);
+      color:var(--white); font-family:'Nunito',sans-serif; font-size:1.1rem;
+      font-weight:800; padding:17px; border:none; border-radius:50px; cursor:pointer;
+      box-shadow:0 8px 28px rgba(45,122,31,.35); transition:transform .2s, box-shadow .2s;
       margin-top:10px; letter-spacing:.4px;
     }
     .btn-submit:hover  { transform:translateY(-3px) scale(1.02); box-shadow:0 14px 36px rgba(45,122,31,.45); }
@@ -325,34 +209,28 @@
       padding:24px 22px; text-align:center;
     }
     .success-msg .check { font-size:2.6rem; display:block; margin-bottom:10px; }
-    .success-msg p      { font-size:1rem; font-weight:700; color:var(--green); line-height:1.7; }
-    .success-msg .dismiss-btn {
-      margin-top:16px; display:inline-block;
-      background:var(--green2); color:var(--white);
-      font-family:'Nunito',sans-serif; font-size:.9rem; font-weight:800;
-      padding:10px 28px; border:none; border-radius:50px;
+    .success-msg p { font-size:1rem; font-weight:700; color:var(--green); line-height:1.7; }
+    .dismiss-btn {
+      margin-top:16px; display:inline-block; background:var(--green2);
+      color:var(--white); font-family:'Nunito',sans-serif; font-size:.9rem;
+      font-weight:800; padding:10px 28px; border:none; border-radius:50px;
       cursor:pointer; transition:background .2s;
     }
-    .success-msg .dismiss-btn:hover { background:var(--green); }
+    .dismiss-btn:hover { background:var(--green); }
 
     .spinner {
       display:none; width:22px; height:22px;
-      border:3px solid rgba(255,255,255,.4);
-      border-top-color:var(--white); border-radius:50%;
-      animation:spin .7s linear infinite; margin:0 auto;
+      border:3px solid rgba(255,255,255,.4); border-top-color:var(--white);
+      border-radius:50%; animation:spin .7s linear infinite; margin:0 auto;
     }
     @keyframes spin { to { transform:rotate(360deg); } }
 
     .error-msg {
-      display:none; margin-top:16px;
-      background:#fdecea; border:2px solid var(--red);
-      border-radius:12px; padding:14px 18px;
+      display:none; margin-top:16px; background:#fdecea;
+      border:2px solid var(--red); border-radius:12px; padding:14px 18px;
       color:var(--red); font-weight:700; font-size:.92rem; text-align:center;
     }
 
-    /* ══════════════════════════════
-       ANIMATIONS
-    ══════════════════════════════ */
     @keyframes fadeDown {
       from { opacity:0; transform:translateY(-20px); }
       to   { opacity:1; transform:translateY(0); }
@@ -360,17 +238,17 @@
 
     @media (max-width:500px) {
       .form-card { padding:32px 22px; }
+      .btn-register { padding:16px 32px; font-size:1rem; }
     }
   </style>
 </head>
 <body>
 
-<!-- ╔══════════════════════════════════════════════════╗
-     ║              PAGE ACCUEIL                       ║
-     ╚══════════════════════════════════════════════════╝ -->
+<!-- ════════════════════════════════════════
+     PAGE ACCUEIL
+════════════════════════════════════════ -->
 <div id="page-accueil">
 
-  <!-- HERO -->
   <section class="hero">
     <div class="badge">🌿 Spéciale Formation 2026</div>
     <h1>Bienvenue à la<br><span>Formation des Fruités</span> 🍓🥤</h1>
@@ -381,48 +259,42 @@
     <div class="logo-wrapper">
       <img class="logo-circle" src="images/logo[1].jpeg" alt="Logo Les Fruités" />
     </div>
+    <!-- BOUTON SOUS LE LOGO -->
+    <button onclick="allerFormulaire()" style="
+      display:block;
+      margin-top:28px;
+      background:linear-gradient(135deg,#1565c0,#1e88e5);
+      color:#ffffff;
+      font-family:'Nunito',sans-serif;
+      font-size:1.05rem;
+      font-weight:800;
+      padding:16px 40px;
+      border-radius:50px;
+      border:none;
+      cursor:pointer;
+      box-shadow:0 8px 28px rgba(21,101,192,.4);
+      letter-spacing:.5px;
+      opacity:1;
+      visibility:visible;
+      position:relative;
+      z-index:10;
+    ">S'inscrire à la Formation 🍓</button>
   </section>
 
-  <!-- INFOS CLÉS -->
   <section class="info-section">
     <div class="container">
       <h2 class="section-title">Informations Clés</h2>
       <div class="cards-grid">
-        <div class="card">
-          <div class="card-icon">📅</div>
-          <div class="card-label">Date</div>
-          <div class="card-value">10 au 14 Mars 2026</div>
-        </div>
-        <div class="card">
-          <div class="card-icon">💻</div>
-          <div class="card-label">Format</div>
-          <div class="card-value">Formation en ligne — Google Meet</div>
-        </div>
-        <div class="card">
-          <div class="card-icon">🎓</div>
-          <div class="card-label">Type</div>
-          <div class="card-value">Intensive — Théorie & Pratique</div>
-        </div>
-        <div class="card">
-          <div class="card-icon">📜</div>
-          <div class="card-label">Attestation</div>
-          <div class="card-value">Délivrée à la fin de la formation</div>
-        </div>
-        <div class="card">
-          <div class="card-icon">🤝</div>
-          <div class="card-label">Suivi</div>
-          <div class="card-value">1 mois de suivi après la formation</div>
-        </div>
-        <div class="card">
-          <div class="card-icon">📲</div>
-          <div class="card-label">Contact</div>
-          <div class="card-value">+228 90 27 00 80</div>
-        </div>
+        <div class="card"><div class="card-icon">📅</div><div class="card-label">Date</div><div class="card-value">10 au 14 Juin 2026</div></div>
+        <div class="card"><div class="card-icon">💻</div><div class="card-label">Format</div><div class="card-value">Formation en ligne — Google Meet</div></div>
+        <div class="card"><div class="card-icon">🎓</div><div class="card-label">Type</div><div class="card-value">Intensive — Théorie & Pratique</div></div>
+        <div class="card"><div class="card-icon">📜</div><div class="card-label">Attestation</div><div class="card-value">Délivrée à la fin de la formation</div></div>
+        <div class="card"><div class="card-icon">🤝</div><div class="card-label">Suivi</div><div class="card-value">1 mois de suivi après la formation</div></div>
+        <div class="card"><div class="card-icon">📲</div><div class="card-label">Contact</div><div class="card-value">+228 90 27 00 80</div></div>
       </div>
     </div>
   </section>
 
-  <!-- MODULES -->
   <section class="modules-section">
     <div class="container">
       <h2 class="section-title">Les Modules de la Formation</h2>
@@ -436,59 +308,35 @@
     </div>
   </section>
 
-  <!-- PRIX & PAIEMENT -->
   <section class="price-section">
     <div class="container">
       <h2 class="section-title">Frais d'Inscription & Paiement</h2>
       <div class="price-box">
         <div class="price-amount">50 000 FCFA</div>
         <p class="price-sub">Frais de participation à la formation</p>
-
         <div class="price-nb">
           <strong>📌 NB :</strong> Ce montant est en Francs CFA togolais.
           Veuillez le convertir dans votre monnaie locale avant d'effectuer le paiement.
         </div>
-
-        <p style="font-weight:800;font-size:.9rem;color:#333;margin-bottom:14px;text-align:left;">
-          Modes de paiement acceptés :
-        </p>
+        <p style="font-weight:800;font-size:.9rem;color:#333;margin-bottom:14px;text-align:left;">Modes de paiement acceptés :</p>
         <div class="payment-methods">
-          <div class="payment-item">
-            💸 <span>Western Union</span> — au nom de : <span>SIMLIWA POUWEDEOU</span>
-          </div>
-          <div class="payment-item">
-            📱 <span>Mixx by Yas</span> — numéro : <span>+228 90 27 00 80</span>
-          </div>
+          <div class="payment-item">💸 <span>Western Union</span> — au nom de : <span>SIMLIWA POUWEDEOU</span></div>
+          <div class="payment-item">📱 <span>Mixx by Yas</span> — numéro : <span>+228 90 27 00 80</span></div>
         </div>
-
         <div class="whatsapp-note">
-          📸 Après le paiement, faites une capture d'écran de la confirmation
-          et envoyez-la sur WhatsApp au <strong>&nbsp;+228 90 27 00 80</strong>
+          📸 Après le paiement, faites une capture d'écran de la confirmation et envoyez-la sur WhatsApp au <strong>&nbsp;+228 90 27 00 80</strong>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- MODALITÉS -->
   <section class="modalities-section">
     <div class="container">
       <h2 class="section-title">Comment ça fonctionne ?</h2>
       <div class="modalities-grid">
-        <div class="modality-card green">
-          <div class="modality-card-icon">✅</div>
-          <h3>1. Inscrivez-vous</h3>
-          <p>Remplissez le formulaire d'inscription ci-dessous et soumettez-le.</p>
-        </div>
-        <div class="modality-card red">
-          <div class="modality-card-icon">💳</div>
-          <h3>2. Payez</h3>
-          <p>Effectuez le paiement via Western Union ou Mixx by Yas et envoyez la capture WhatsApp.</p>
-        </div>
-        <div class="modality-card yellow">
-          <div class="modality-card-icon">🔗</div>
-          <h3>3. Rejoignez le groupe</h3>
-          <p>Une fois le paiement validé, le lien Google Meet vous sera partagé dans un groupe WhatsApp dédié.</p>
-        </div>
+        <div class="modality-card green"><div class="modality-card-icon">✅</div><h3>1. Inscrivez-vous</h3><p>Remplissez le formulaire d'inscription et soumettez-le.</p></div>
+        <div class="modality-card red"><div class="modality-card-icon">💳</div><h3>2. Payez</h3><p>Effectuez le paiement via Western Union ou Mixx by Yas et envoyez la capture WhatsApp.</p></div>
+        <div class="modality-card yellow"><div class="modality-card-icon">🔗</div><h3>3. Rejoignez le groupe</h3><p>Une fois le paiement validé, le lien Google Meet vous sera partagé dans un groupe WhatsApp dédié.</p></div>
       </div>
       <p style="text-align:center;margin-top:28px;font-size:.95rem;color:#555;font-weight:700;">
         ⚠️ L'inscription ne sera confirmée qu'après validation du paiement.
@@ -496,26 +344,24 @@
     </div>
   </section>
 
-  <!-- CTA -->
   <section class="cta-section">
     <div class="container">
       <h2 class="section-title">Prêt(e) à nous rejoindre ?</h2>
       <p>Ne manquez pas cette opportunité unique ! Les places sont limitées. Cliquez ci-dessous pour remplir votre formulaire d'inscription.</p>
-      <button class="btn-register" onclick="allerFormulaire()">S'inscrire à la Formation</button>
+      <button class="btn-register" onclick="allerFormulaire()">S'inscrire à la Formation 🍓</button>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <p>© 2026 <strong>Les Fruités</strong> — Tous droits réservés &nbsp;|&nbsp; Contact : +228 90 27 00 80</p>
   </footer>
 
-</div><!-- fin #page-accueil -->
+</div>
 
 
-<!-- ╔══════════════════════════════════════════════════╗
-     ║            PAGE FORMULAIRE                      ║
-     ╚══════════════════════════════════════════════════╝ -->
+<!-- ════════════════════════════════════════
+     PAGE FORMULAIRE
+════════════════════════════════════════ -->
 <div id="page-formulaire">
 
   <button class="back-link" onclick="retourAccueil()">← Retour à la présentation</button>
@@ -559,32 +405,25 @@
       </div>
     </div>
 
-    <!-- Message de succès – reste affiché jusqu'à fermeture manuelle -->
     <div class="success-msg" id="success-msg">
       <span class="check">✅</span>
-      <p>
-        Merci ! Votre inscription a été bien enregistrée.<br/><br/>
-        Veuillez procéder au paiement pour qu'elle soit validée.
-      </p>
+      <p>Merci ! Votre inscription a été bien enregistrée.<br/><br/>Veuillez procéder au paiement pour qu'elle soit validée.</p>
       <button class="dismiss-btn" onclick="fermerMessage()">Fermer</button>
     </div>
   </div>
 
-</div><!-- fin #page-formulaire -->
+</div>
 
 
 <script>
-  // ─── REMPLACEZ CES 3 VALEURS AVEC VOS IDENTIFIANTS EMAILJS ───
-  const EMAILJS_PUBLIC_KEY  = "VOTRE_PUBLIC_KEY";
-  const EMAILJS_SERVICE_ID  = "VOTRE_SERVICE_ID";
-  const EMAILJS_TEMPLATE_ID = "VOTRE_TEMPLATE_ID";
-  // ──────────────────────────────────────────────────────────────
+  const EMAILJS_PUBLIC_KEY  = "9V_ND8e40rvbPCMUA";
+  const EMAILJS_SERVICE_ID  = "service_3gxoy3m";
+  const EMAILJS_TEMPLATE_ID = "template_c4s6jgp";
 
   emailjs.init(EMAILJS_PUBLIC_KEY);
 
-  /* ── Navigation entre les deux vues ── */
   function allerFormulaire() {
-    document.getElementById('page-accueil').style.display    = 'none';
+    document.getElementById('page-accueil').style.display = 'none';
     const fp = document.getElementById('page-formulaire');
     fp.style.display = 'flex';
     window.scrollTo(0, 0);
@@ -596,7 +435,6 @@
     window.scrollTo(0, 0);
   }
 
-  /* ── Envoi du formulaire ── */
   function envoyerInscription() {
     const fullname = document.getElementById('fullname').value.trim();
     const pays     = document.getElementById('pays').value.trim();
@@ -607,7 +445,7 @@
     errorEl.style.display = 'none';
 
     if (!fullname || !pays || !ville || !whatsapp) {
-      errorEl.textContent   = '⚠️ Veuillez remplir tous les champs avant d\'envoyer.';
+      errorEl.textContent   = "⚠️ Veuillez remplir tous les champs avant d'envoyer.";
       errorEl.style.display = 'block';
       return;
     }
@@ -627,7 +465,7 @@
       to_email : "lesfruites46@gmail.com"
     })
     .then(() => {
-      document.getElementById('form-area').style.display  = 'none';
+      document.getElementById('form-area').style.display   = 'none';
       document.getElementById('success-msg').style.display = 'block';
     })
     .catch(() => {
@@ -638,7 +476,6 @@
     });
   }
 
-  /* ── Fermeture du message de succès ── */
   function fermerMessage() {
     ['fullname','pays','ville','whatsapp'].forEach(id => document.getElementById(id).value = '');
     document.getElementById('success-msg').style.display = 'none';
